@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 const SPEED: int = 200
 const JUMP: int = 300
 
@@ -9,7 +10,6 @@ const JUMP: int = 300
 var mining:bool = true
 
 func _process(delta: float) -> void:
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		
@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
 	
 	if mining and Input.is_action_pressed("Click"):
 		block_break.start()
@@ -42,3 +41,6 @@ func _process(delta: float) -> void:
 func _on_block_break_timeout() -> void:
 	mining = true
 	pass
+	
+func is_mouse_in_player_area() -> bool:
+	return $DetectionArea.is_mouse_in_area()

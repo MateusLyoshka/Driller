@@ -203,9 +203,9 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAA
 tile_set = SubResource("TileSet_lyd6k")
 
 [node name="Player" parent="." index="1"]
-position = Vector2(148, -11)
+position = Vector2(152, -11)
 
-[node name="Camera2D" parent="Player" index="2"]
+[node name="Camera2D" parent="Player" index="3"]
 zoom = Vector2(4, 4)
 
 [node name="BlockBreak" type="Timer" parent="." index="2"]
