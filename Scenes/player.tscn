@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://bpobcoar8w64s"]
 
 [ext_resource type="Script" uid="uid://4t72fvc3k5du" path="res://Scripts/Player/player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://b2v6lkv77jiyo" path="res://brackeys_platformer_assets/sprites/knight.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://b2v6lkv77jiyo" path="res://Assets/sprites/knight.png" id="1_v0iea"]
 [ext_resource type="Script" uid="uid://e8u6g3cg2og4" path="res://Scripts/Player/body_detection.gd" id="3_6t5aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
@@ -188,7 +188,7 @@ radius = 5.0
 height = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cvnsp"]
-size = Vector2(48, 50)
+size = Vector2(42, 46)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 30

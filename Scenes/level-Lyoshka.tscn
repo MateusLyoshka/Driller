@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://w0o5qgws3xs5"]
 
-[ext_resource type="Texture2D" uid="uid://b8liagu2fj1jy" path="res://brackeys_platformer_assets/sprites/world_tileset.png" id="1_tumq0"]
+[ext_resource type="Texture2D" uid="uid://b8liagu2fj1jy" path="res://Assets/sprites/world_tileset.png" id="1_tumq0"]
 [ext_resource type="PackedScene" uid="uid://bpobcoar8w64s" path="res://Scenes/player.tscn" id="2_k5f4k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5f4k"]
