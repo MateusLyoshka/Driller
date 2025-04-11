@@ -1,10 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://w0o5qgws3xs5"]
+[gd_scene load_steps=5 format=3 uid="uid://w0o5qgws3xs5"]
 
+[ext_resource type="Texture2D" uid="uid://bda44o11vcki4" path="res://Assets/sprites/background.png" id="1_k5f4k"]
 [ext_resource type="PackedScene" uid="uid://bpobcoar8w64s" path="res://Scenes/player.tscn" id="1_tumq0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6phgx"]
+texture = ExtResource("1_k5f4k")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_81xng"]
+sources/0 = SubResource("TileSetAtlasSource_6phgx")
 
 [node name="Level" type="Node2D"]
 
 [node name="Terrains" type="Node2D" parent="."]
+
+[node name="CavesBackground" type="TileMapLayer" parent="Terrains"]
+tile_set = SubResource("TileSet_81xng")
 
 [node name="Terrain" type="TileMapLayer" parent="Terrains"]
 

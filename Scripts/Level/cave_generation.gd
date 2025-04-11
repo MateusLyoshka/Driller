@@ -1,38 +1,43 @@
 extends Node
 
-var tile_map: TileMapLayer
-var tile_coord:Vector2i = Vector2i(0,0)
-var width := 100
-var height := 100
-var cave_data := []
-
-var terrain_set: int = 0 # ID do terrain set no TileSet
-var terrain_id: int = 0  # Tipo de terreno dentro do terrain set (ex: parede = 0)
+#Noise var
 var fast_noise := FastNoiseLite.new()
+@onready var terrain_tile: TileMapLayer = $"../../Terrain"
+@onready var background_tile: TileMapLayer = $"../../CavesBackground"
+
+#Cave vars
+var cave_tile: TileMapLayer
+var cave_set: int = 0
+var cave_id: int = 0  
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	tile_map = get_parent() as TileMapLayer
+	cave_tile = get_parent() as TileMapLayer
+	fast_noise.seed = randi()
+	fast_noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	fast_noise.fractal_octaves = 2
+	fast_noise.frequency = 0.08
 	_generate_cave()
-	#_update_tilemap()
 
 func _generate_cave():
-	var coord = []
-	for x in 30:
-		for y in 30:
+
+	for x in 100:
+		for y in range(3,50,1):
+			var coord = Vector2i(x,y)
 			var noise := fast_noise.get_noise_2d(x,y)
-			if noise < 0.14:
-				coord.append(Vector2i(x,y))
+			if noise > 0.14:
+				cave_tile.set_cells_terrain_connect([coord], cave_set, cave_set, 0)
+			else:
+				var atlas = Vector2i(6, 1)
+				terrain_tile.set_cell(coord, 0, Vector2i(6,1),0)
+			background_tile.set_cell(coord, 0, Vector2i(0,0),0)
 
-	tile_map.set_cells_terrain_connect(coord, terrain_set, terrain_set, 0)
+func _is_cave():
+	pass
 
-#func _update_tilemap():
-	#var terrain_positions = []
-#
-	#for y in height:
-		#for x in width:
-			#var pos = Vector2i(x, y)
-			#if cave_data[y][x] == 1:
-				#terrain_positions.append(pos)
-	#
-	#tile_map.set_cells_terrain_connect(terrain_positions, terrain_set, terrain_id, 0)
+func _is_cave_floor():
+	pass
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Restart"):
+		get_tree().reload_current_scene()
